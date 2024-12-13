@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>MYED</title>
+    <style>
+
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff; 
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 1s ease-out;
+      }
+
+    
+      .loader {
+        width: 100px;
+        height: 100px;
+        border: 10px solid #ffffff; 
+        border-top: 10px solid #3498db; 
+        border-radius: 50%;
+        animation: spin 1.5s ease-in-out infinite;
+      }
+
+      /* Spinner rotation */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <div id="root"></div>
+
+    <script>
+      // Remove the loading screen with transition after the app is fully loaded
+      window.addEventListener("load", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        if (loadingScreen) {
+          loadingScreen.style.opacity = "0"; // Fade out effect
+          setTimeout(() => {
+            loadingScreen.style.display = "none"; // Hide after fade-out
+          }, 1000); // Duration of fade-out
+        }
+      });
+    </script>
+  </body>
+</html>
